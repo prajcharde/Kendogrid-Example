@@ -1,0 +1,87 @@
+<button type="button" class="btn btn-default" (click)="openModal(template)">Add new</button>
+<ng-template #template>
+  <div class="modal-header" style="margin-top:150px;">
+    <h4 class="modal-title pull-left">Add New Product</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+                <form class="form-horizontal" #f=ngForm [formGroup]="ProductForm" (ngSubmit)="onFormSubmit(f.value); f.resetForm()">
+                  <div class="form-group">  
+                    <label  class="col-sm-2 control-label"
+                              for="productcode">Product Code</label> 
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" formControlName="ProductCode"  placeholder="Enter ProductCode">
+                                   </div>
+                    </div>
+                  <div class="form-group">  
+                    <label  class="col-sm-2 control-label"
+                              for="productname">Product Name</label> 
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" formControlName="ProductName"  placeholder="Enter ProductName">
+                                   </div>
+                    </div>
+                   <div class="form-group"> 
+                     <label  class="col-sm-2 control-label"
+                              for="productqty">Product Qty</label> 
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" formControlName="ProductQty"  placeholder="Enter ProductQty">
+                                   </div>
+                     </div>
+                  <div class="form-group">  
+                    <label  class="col-sm-2 control-label"
+                              for="productprice">Product Price</label>
+                                 <div class="col-sm-10">
+                                   <input type="text" class="form-control" formControlName="ProductPrice"  placeholder="Enter ProductPrice">
+                                    </div>
+                    </div>
+                  <div class="form-group"> 
+                     <label  class="col-sm-2 control-label"
+                              for="productdiscount">Product Discount</label> 
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" formControlName="ProductDiscount"  placeholder="Enter ProductDiscount">
+                                   </div>
+                     </div>
+                      <div class="form-group"> 
+                     <label  class="col-sm-2 control-label"
+                              for="productamount">Amount</label> 
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" formControlName="ProductAmount"  placeholder="ProductAmount here" readonly>
+                                   </div>
+                     </div>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 400px;">Submit</button> 
+                    
+              </form> 
+  </div>
+   
+</ng-template>
+
+<kendo-grid
+          [data]="gridView1"
+          [height]="400"
+          
+          >        
+            <kendo-grid-column field="ProductCode" title="Code" width="80">
+            </kendo-grid-column>
+            <kendo-grid-column field="ProductName" title="ProductName" width="250">
+            </kendo-grid-column>
+            <kendo-grid-column field="ProductQty" title="Qty" width="80">
+            </kendo-grid-column>
+            <kendo-grid-column field="ProductPrice" title="Price" width="100">
+            </kendo-grid-column>
+            <kendo-grid-column field="ProductDiscount" title="Discount" width="80">
+            </kendo-grid-column>
+            <kendo-grid-column field="ProductAmount" title="Amount" width="100">
+            </kendo-grid-column>
+            <!--<kendo-grid-command-column title="Command" width="220">
+           <ng-template kendoGridCellTemplate let-isNew="isNew">
+              <button kendoGridRemoveCommand>Remove</button>
+                <!--<button kendoGridEditCommand class="k-primary">Edit</button>
+                <button kendoGridRemoveCommand>Remove</button>
+                <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+                <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+            </ng-template>
+        </kendo-grid-command-column>-->
+        </kendo-grid>
+
